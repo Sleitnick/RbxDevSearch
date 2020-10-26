@@ -1,5 +1,5 @@
 body {
-	width: 300px;
+	width: 320px;
 	font-family: sans-serif;
 }
 
@@ -13,6 +13,13 @@ body {
 	background-repeat: no-repeat;
 	background-position: 10px 10px;
 	background-size: 20px;
+	transition: border-color 0.1s ease-out, box-shadow 0.1s ease-out;
+}
+
+#search:focus {
+	outline: none !important;
+	border-color: rgb(0, 81, 170);
+	box-shadow: 0 0 5px 0px #00000040;
 }
 
 .result-item {
@@ -23,6 +30,7 @@ body {
 	border-radius: 4px;
 	overflow-x: hidden;
 	cursor: pointer;
+	transition: border-color 0.1s ease-out, box-shadow 0.1s ease-out, background-color 0.1s ease-out;
 }
 
 .result-item:hover {
@@ -48,4 +56,21 @@ body {
 .result-item-link {
 	text-decoration: none;
 	color: inherit;
+}
+
+.result-item-link:focus {
+	outline: none !important;
+}
+
+.result-item-link:focus .result-item {
+	border-color: rgb(0, 81, 170);
+	box-shadow: 0 0 5px 0px #00000040;
+	background-color: rgb(230, 230, 230);
+}
+
+#title {
+	background-image: url("icons/48.png");
+	background-repeat: no-repeat;
+	background-size: 30px;
+	padding-left: 40px;
 }

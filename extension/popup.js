@@ -68,9 +68,9 @@ const search = () => {
 	return result;
 };
 
-const createResultChild = (item) => {
+const createResultChild = (item, index) => {
 	return `
-		<a href="${item.url}" class="result-item-link" target="_blank">
+		<a href="${item.url}" class="result-item-link" target="_blank" data-index="${index}" id="result-item-${index}">
 			<div class="result-item">
 				<h3 class="result-title">${item.title}</h3>
 				<p class="result-category">${item.category}</p>
@@ -93,10 +93,50 @@ const onSearchInputChanged = () => {
 		}
 	} else {
 		const resultHtml = [];
-		for (const item of result) {
-			resultHtml.push(createResultChild(item));
+		for (let i = 0; i < result.length; i++) {
+			const item = result[i];
+			resultHtml.push(createResultChild(item, i));
 		}
 		resultsDiv.innerHTML = resultHtml.join("");
+	}
+};
+
+const focusOnNextElement = () => {
+	const focused = document.querySelector(":focus");
+	if (!focused) return;
+	let index = -1;
+	if (focused === searchInput) {
+		index = 0;
+	} else {
+		index = focused.dataset.index;
+		if (typeof(index) === "undefined") {
+			return;
+		}
+		index = parseInt(index) + 1;
+	}
+	const id = `result-item-${index}`;
+	const nextFocused = document.getElementById(id);
+	if (nextFocused) {
+		nextFocused.focus();
+	}
+};
+
+const focusOnPrevElement = () => {
+	const focused = document.querySelector(":focus");
+	if ((!focused) || focused === searchInput) return null;
+	let index = focused.dataset.index;
+	if (typeof(index) === "undefined") {
+		return;
+	}
+	index = parseInt(index) - 1;
+	if (index < 0) {
+		searchInput.focus();
+		return;
+	}
+	const id = `result-item-${index}`;
+	const prevFocused = document.getElementById(id);
+	if (prevFocused) {
+		prevFocused.focus();
 	}
 };
 
@@ -124,6 +164,21 @@ const init = () => {
 		}
 	};
 	onSearchInputChanged();
+
+	document.onkeydown = (event) => {
+		const key = event.key;
+		let handled = false;
+		if (key === "ArrowDown") {
+			focusOnNextElement();
+			handled = true;
+		} else if (key === "ArrowUp") {
+			focusOnPrevElement();
+			handled = true;
+		}
+		if (handled) {
+			event.preventDefault();
+		}
+	};
 
 	searchInput.focus();
 
