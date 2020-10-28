@@ -18,7 +18,7 @@ body {
 
 #search:focus {
 	outline: none !important;
-	border-color: rgb(0, 81, 170);
+	border-color: #3399FF;
 	box-shadow: 0 0 5px 0px #00000040;
 }
 
@@ -63,7 +63,7 @@ body {
 }
 
 .result-item-link:focus .result-item {
-	border-color: rgb(0, 81, 170);
+	border-color: #3399FF;
 	box-shadow: 0 0 5px 0px #00000040;
 	background-color: rgb(230, 230, 230);
 }
@@ -73,4 +73,14 @@ body {
 	background-repeat: no-repeat;
 	background-size: 20px;
 	padding-left: 30px;
+	font-weight: 300;
+}
+
+#title a {
+	text-decoration: none;
+	color: #3F3F3F;
+}
+
+#title a:hover {
+	color: #3399FF;
 }
