@@ -1,4 +1,4 @@
-![img](extension/icons/128.png)
+![img](chrome_extension/icons/128.png)
 
 # RbxDevSearch
 
