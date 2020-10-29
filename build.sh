@@ -8,8 +8,8 @@ if [ -f firefox_extension_build.zip ]; then
 fi
 
 echo "Distribute shared"
-cp extension/shared/. extension/chrome_extension/
-cp extension/shared/. extension/firefox_extension/
+cp -a extension/shared/. extension/chrome_extension/
+cp -a extension/shared/. extension/firefox_extension/
 
 echo "Fetching page mapping"
 python3 fetch_page_mapping.py
