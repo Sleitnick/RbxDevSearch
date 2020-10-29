@@ -3,15 +3,17 @@
 	<head>
 		<meta charset="utf-8">
 		<title>DevHub Search</title>
+		<link rel="stylesheet" href="../theme.css" type="text/css"/>
 		<link rel="stylesheet" href="./popup.css" type="text/css"/>
 	</head>
 	<body>
 		<h2 id="title"><a href="https://developer.roblox.com/" target="_blank">Roblox DevHub Search</a></h2>
 		<form id="search-form">
-			<input id="search" type="search" placeholder="Search..." autocomplete="off"/>
+			<input id="search" type="search" placeholder="Search..." autocomplete="off" spellcheck="false"/>
 		</form>
 		<div id="results"></div>
 		<script src="../simpleStorage.js"></script>
+		<script src="../theme.js"></script>
 		<script src="./pageMapping.js"></script>
 		<script src="./popup.js"></script>
 	</body>

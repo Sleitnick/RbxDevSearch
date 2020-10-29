@@ -2,6 +2,8 @@ body {
 	width: 320px;
 	font-family: "Segoe UI", Tahoma, sans-serif;
 	font-size: 75%;
+	background-color: hsl(0, 0%, var(--search-bg-lum));
+	color: hsl(0, 0%, var(--text-lum));
 }
 
 #search {
@@ -15,6 +17,8 @@ body {
 	background-position: 10px 10px;
 	background-size: 20px;
 	transition: border-color 0.1s ease-out, box-shadow 0.1s ease-out;
+	background-color: hsl(0, 0%, var(--search-input-bg-lum));
+	color: hsl(0, 0%, var(--text-lum));
 }
 
 #search:focus {
@@ -35,11 +39,12 @@ body {
 }
 
 .result-item:hover {
-	background-color: rgb(230, 230, 230);
+	background-color: hsl(0, 0%, var(--result-item-hover-lum));
 }
 
 .result-item:hover .result-title {
-	color: rgb(0, 81, 170);
+	/*color: rgb(0, 81, 170);*/
+	font-weight: bold;
 }
 
 .result-item .result-title {
@@ -66,7 +71,7 @@ body {
 .result-item-link:focus .result-item {
 	border-color: #3399FF;
 	box-shadow: 0 0 5px 0px #00000040;
-	background-color: rgb(230, 230, 230);
+	background-color: hsl(0, 0%, var(--result-item-hover-lum));
 }
 
 #title {
@@ -74,12 +79,12 @@ body {
 	background-repeat: no-repeat;
 	background-size: 20px;
 	padding-left: 30px;
-	font-weight: 300;
+	font-weight: 400;
 }
 
 #title a {
 	text-decoration: none;
-	color: #3F3F3F;
+	color: hsl(0, 0%, var(--text-lum));;
 }
 
 #title a:hover {
