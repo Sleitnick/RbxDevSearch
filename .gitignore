@@ -1,3 +1,4 @@
 *.ai
 *.psd
-extension_build.zip
+*.zip
+*_extension/manifest.json
