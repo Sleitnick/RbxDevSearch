@@ -154,18 +154,18 @@ const init = () => {
 		}
 	}
 
-	searchInput.oninput = onSearchInputChanged;
-	searchForm.onsubmit = (event) => {
+	searchInput.addEventListener("input", onSearchInputChanged);
+	searchForm.addEventListener("submit", (event) => {
 		event.preventDefault();
 		const result = search();
 		if (result.length > 0) {
 			const firstResult = result[0];
 			window.open(firstResult.url, "_blank");
 		}
-	};
+	});
 	onSearchInputChanged();
 
-	document.onkeydown = (event) => {
+	document.addEventListener("keydown", (event) => {
 		const key = event.key;
 		let handled = false;
 		if (key === "ArrowDown") {
@@ -178,7 +178,7 @@ const init = () => {
 		if (handled) {
 			event.preventDefault();
 		}
-	};
+	});
 
 	searchInput.focus();
 

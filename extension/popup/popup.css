@@ -1,6 +1,7 @@
 body {
 	width: 320px;
-	font-family: sans-serif;
+	font-family: "Segoe UI", Tahoma, sans-serif;
+	font-size: 75%;
 }
 
 #search {
@@ -9,7 +10,7 @@ body {
 	font-size: 16px;
 	border: 2px solid #cccccc;
 	border-radius: 4px;
-	background-image: url("icons/search.png");
+	background-image: url("../icons/search.png");
 	background-repeat: no-repeat;
 	background-position: 10px 10px;
 	background-size: 20px;
@@ -69,7 +70,7 @@ body {
 }
 
 #title {
-	background-image: url("icons/48.png");
+	background-image: url("../icons/48.png");
 	background-repeat: no-repeat;
 	background-size: 20px;
 	padding-left: 30px;
