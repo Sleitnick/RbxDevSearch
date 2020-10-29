@@ -1,8 +1,8 @@
-if [ -f extension_build.zip ]; then
-	rm extension_build.zip
+if [ -f chrome_extension_build.zip ]; then
+	rm chrome_extension_build.zip
 fi
 
-cd extension
-zip -r ../extension_build.zip *
+cd chrome_extension
+zip -r ../chrome_extension_build.zip *
 
 echo "Build complete"

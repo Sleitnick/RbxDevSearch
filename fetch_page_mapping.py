@@ -2,7 +2,7 @@ import urllib.request
 import io
 
 URL = "https://dk135eecbplh9.cloudfront.net/static/page_mappings.json"
-PAGE_MAPPING_FILE = "extension/pageMapping.js"
+PAGE_MAPPING_FILE = "chrome_extension/pageMapping.js"
 
 def write_page_mapping_file(page_mapping_json):
 	print("Writing data")
