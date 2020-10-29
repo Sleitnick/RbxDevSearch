@@ -5,6 +5,17 @@ const searchInput = document.getElementById("search");
 const resultsDiv = document.getElementById("results");
 const allItems = [];
 
+const searchCategories = {
+	"articles": true,
+	"videos": true,
+	"codesamples": true,
+	"datatype": true,
+	"recipes": true,
+	"enum": true,
+	"resources": true,
+	"other": true
+};
+
 // --------------------------------------------------------------------------------
 // Levenshtein distance: https://stackoverflow.com/a/36566052/2077120
 const editDistance = (s1, s2) => {
@@ -56,10 +67,12 @@ const search = () => {
 		return result;
 	}
 	for (const item of allItems) {
-		const title = item.titleLower;
-		if (title.includes(input) || input.includes(title)) {
-			item._sim = similarity(title, input);
-			result.push(item);
+		if (searchCategories[item.category]) {
+			const title = item.titleLower;
+			if (title.includes(input) || input.includes(title)) {
+				item._sim = similarity(title, input);
+				result.push(item);
+			}
 		}
 	}
 	result.sort((a, b) => {
@@ -141,6 +154,19 @@ const focusOnPrevElement = () => {
 };
 
 const init = () => {
+
+	for (const category in searchCategories) {
+		simpleStorage.get(category, true).then((val) => {
+			searchCategories[category] = val;
+		}).catch((e) => console.error(e));
+	}
+	simpleStorage.onChanged.addListener((changes) => {
+		for (const key in changes) {
+			if (typeof searchCategories[key] !== "undefined") {
+				searchCategories[key] = changes[key].newValue;
+			}
+		}
+	});
 
 	// Get all items:
 	for (const categoryKey in pageMapping) {
