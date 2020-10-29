@@ -19,7 +19,7 @@
 	},
 	"browser_specific_settings": {
 		"gecko": {
-			"id": "rbxdevhubsearch@sleitnick.com"
+			"id": "{c01de5b3-4789-416a-a814-9b2ac0aaf987}"
 		}
 	},
 	"permissions": ["storage"]
