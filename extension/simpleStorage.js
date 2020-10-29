@@ -65,5 +65,4 @@ if (simpleStorage.__mock) {
 	if (typeof simpleStorage.onChanged === "undefined") {
 		simpleStorage.onChanged = chrome.storage.onChanged;
 	}
-	console.log("OnChanged", simpleStorage.onChanged);
 }
