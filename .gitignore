@@ -1,3 +1,5 @@
 *.ai
 *.psd
-extension_build.zip
+*.zip
+extension/*_extension/manifest.json
+extension/*_extension/icons

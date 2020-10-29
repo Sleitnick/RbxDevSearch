@@ -1,6 +1,6 @@
 const simpleStorage = {__mock: false};
 
-if (typeof chrome.storage === "undefined") {
+if (chrome.storage === "undefined") {
 	simpleStorage.__mock = true;
 	simpleStorage.__mockStore = {};
 	simpleStorage.__mockOnChangedCallbacks = [];
@@ -62,4 +62,7 @@ if (simpleStorage.__mock) {
 	};
 } else {
 	simpleStorage.onChanged = chrome.storage.sync.onChanged;
+	if (typeof simpleStorage.onChanged === "undefined") {
+		simpleStorage.onChanged = chrome.storage.onChanged;
+	}
 }
