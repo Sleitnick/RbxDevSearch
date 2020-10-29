@@ -26,23 +26,13 @@ jobs:
           release_name: Release ${{ github.ref }}
           draft: false
           prerelease: false
-      - name: Upload Chrome Extension
+      - name: Upload Extension
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./chrome_extension_build.zip
-          asset_name: chrome_extension.zip
-          asset_content_type: application/zip
-      - name: Upload Firefox Extension
-        id: upload-release-asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./firefox_extension_build.zip
-          asset_name: firefox_extension.zip
+          asset_path: ./extension_build.zip
+          asset_name: extension.zip
           asset_content_type: application/zip
