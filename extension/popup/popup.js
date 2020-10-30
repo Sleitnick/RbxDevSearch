@@ -163,7 +163,7 @@ const focusOnPrevElement = () => {
 	}
 };
 
-const init = () => {
+const init = async () => {
 
 	for (const category in searchCategories) {
 		simpleStorage.get(category, true).then((val) => {
@@ -179,10 +179,10 @@ const init = () => {
 	});
 
 	// Get all items:
-	for (const categoryKey in pageMapping) {
-		const category = pageMapping[categoryKey];
-		for (const itemKey in category) {
-			const item = category[itemKey];
+	const mapping = await pageMapping.load();
+	for (const categoryKey in mapping) {
+		const category = mapping[categoryKey];
+		for (const item of category) {
 			item.category = categoryKey;
 			item.titleLower = item.title.toLowerCase();
 			item.url = `https://developer.roblox.com/en-us${item.url}`;
