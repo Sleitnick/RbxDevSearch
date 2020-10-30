@@ -58,22 +58,34 @@ const optionsMapping = [
 ];
 
 const generateOptionsList = () => {
-	const htmlFragments = [];
 	for (const optionItem of optionsMapping) {
 		if (optionItem.type === "heading") {
-			htmlFragments.push(`<h2 class="category-heading">${optionItem.title}</h2>`);
+			const heading = document.createElement("h2");
+			heading.className = "category-heading";
+			heading.innerText = optionItem.title;
+			optionsListDiv.appendChild(heading);
 		} else {
-			htmlFragments.push(`<div class="option-item">`);
+			const optionItemDiv = document.createElement("div");
+			optionsListDiv.className = "option-item";
+			const input = document.createElement("input");
+			input.id = optionItem.key;
+			input.type = optionItem.type;
 			if (optionItem.type === "checkbox") {
-				htmlFragments.push(`<input id="${optionItem.key}" type="checkbox"${optionItem.default ? " checked" : ""}>`);
+				if (optionItem.default) {
+					input.checked = true;
+				}
 			} else {
-				htmlFragments.push(`<input id="${optionItem.key}" type="${optionItem.type}" value="${optionItem.default}">`);
+				optionItem.value = optionItem.default;
 			}
-			htmlFragments.push(`<label for="${optionItem.key}">${optionItem.title}</label><br>`);
-			htmlFragments.push(`</div>`);
+			const label = document.createElement("label");
+			label.htmlFor = optionItem.key;
+			label.innerText = optionItem.title;
+			optionItemDiv.appendChild(input);
+			optionItemDiv.appendChild(label);
+			optionItemDiv.appendChild(document.createElement("br"));
+			optionsListDiv.appendChild(optionItemDiv);
 		}
 	}
-	optionsListDiv.innerHTML = htmlFragments.join("");
 	for (const optionItem of optionsMapping) {
 		if (optionItem.type === "heading") continue;
 		const isCheckbox = (optionItem.type === "checkbox");

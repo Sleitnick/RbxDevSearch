@@ -82,14 +82,24 @@ const search = () => {
 };
 
 const createResultChild = (item, index) => {
-	return `
-		<a href="${item.url}" class="result-item-link" target="_blank" data-index="${index}" id="result-item-${index}">
-			<div class="result-item">
-				<h3 class="result-title">${item.title}</h3>
-				<p class="result-category">${item.category}</p>
-			</div>
-		</a>
-	`.trim();
+	const a = document.createElement("a");
+	a.setAttribute("href", item.url);
+	a.setAttribute("target", "_blank");
+	a.dataset.index = index;
+	a.className = "result-item-link";
+	a.id = `result-item-${index}`;
+	const div = document.createElement("div");
+	div.className = "result-item";
+	const h3 = document.createElement("h3");
+	h3.className = "result-title";
+	h3.innerText = item.title;
+	const p = document.createElement("p");
+	p.className = "result-category";
+	p.innerText = item.category;
+	div.appendChild(h3);
+	div.appendChild(p);
+	a.appendChild(div);
+	return a;
 };
 
 const onSearchInputChanged = () => {
@@ -98,20 +108,20 @@ const onSearchInputChanged = () => {
 		result = result.slice(0, MAX_RESULTS);
 	}
 	resultsDiv.innerHTML = "";
+	const resultsInnerDiv = document.createElement("div");
 	if (result.length === 0) {
 		if (searchInput.value.trim() !== "") {
 			const resultChild = document.createElement("p");
-			resultChild.innerHTML = "No results";
-			resultsDiv.appendChild(resultChild);
+			resultChild.innerText = "No results";
+			resultsInnerDiv.appendChild(resultChild);
 		}
 	} else {
-		const resultHtml = [];
 		for (let i = 0; i < result.length; i++) {
 			const item = result[i];
-			resultHtml.push(createResultChild(item, i));
+			resultsInnerDiv.append(createResultChild(item, i));
 		}
-		resultsDiv.innerHTML = resultHtml.join("");
 	}
+	resultsDiv.appendChild(resultsInnerDiv);
 };
 
 const focusOnNextElement = () => {
