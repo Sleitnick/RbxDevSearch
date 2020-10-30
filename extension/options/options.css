@@ -49,13 +49,16 @@ body {
 		background-color: hsl(0, 0%, var(--main-lum));
 	}
 	#content {
-		margin-left: auto;
-		margin-right: auto;
+		margin-left: 10px;
+		margin-right: 10px;
 		max-width: 100%;
-		width: 100%;
+		width: auto;
 		padding: 20px;
 		box-shadow: 0 0 0 0 #0000003B;
 		border-bottom-left-radius: 0;
 		border-bottom-right-radius: 0;
+	}
+	#title {
+		font-size: 2em;
 	}
 }
