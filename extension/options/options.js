@@ -3,18 +3,7 @@ const optionsListDiv = document.getElementById("options-list");
 const optionsMapping = [
 
 	{
-		title: "General",
-		type: "heading"
-	},
-	{
-		title: "Dark Theme",
-		key: "darktheme",
-		type: "checkbox",
-		default: false
-	},
-
-	{
-		title: "Search",
+		title: "Search Preferences",
 		type: "heading"
 	},
 	{
