@@ -40,6 +40,23 @@ body {
 	margin-top: 0;
 }
 
+.btn {
+	border: none;
+	border-radius: 12px;
+	padding: 10px;
+	background-color: hsl(0, 0%, var(--button-lum));
+	color: hsl(0, 0%, var(--button-text-lum));
+	transition: background-color 0.1s ease-out;
+}
+
+.btn:hover:enabled {
+	background-color: hsl(0, 0%, var(--button-hover-lum));
+}
+
+.btn:disabled {
+	color: hsl(0, 0%, var(--button-text-disabled-lum));
+}
+
 .category-heading {
 	margin-bottom: 5px;
 }

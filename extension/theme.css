@@ -6,6 +6,10 @@
 		--bg-lum: 85%;
 		--text-lum: 0%;
 		--result-item-hover-lum: 90%;
+		--button-lum: 80%;
+		--button-hover-lum: 60%;
+		--button-text-lum: 0%;
+		--button-text-disabled-lum: 20%;
 	}
 }
 
@@ -17,5 +21,9 @@
 		--bg-lum: 25%;
 		--text-lum: 80%;
 		--result-item-hover-lum: 15%;
+		--button-lum: 25%;
+		--button-hover-lum: 45%;
+		--button-text-lum: 90%;
+		--button-text-disabled-lum: 70%;
 	}
 }

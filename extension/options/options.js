@@ -106,8 +106,36 @@ const generateOptionsList = () => {
 	}
 };
 
+const setupClearCacheButton = () => {
+	const clearCacheBtn = document.getElementById("clear-cache-btn");
+	const clearCacheText = clearCacheBtn.innerText;
+	const clearCacheActiveText = "Clearing...";
+	const clearCacheDisabledText = "Cleared";
+	let disabled = false;
+	clearCacheBtn.addEventListener("click", () => {
+		if (disabled) return;
+		disabled = true;
+		clearCacheBtn.disabled = true;
+		clearCacheBtn.innerText = clearCacheActiveText;
+		simpleStorage.clear().then(() => {
+			clearCacheBtn.innerText = clearCacheDisabledText;
+		}).catch((err) => {
+			clearCacheBtn.innerText = "Failed";
+			console.error(err);
+		}).finally(() => {
+			setTimeout(() => {
+				disabled = false;
+				clearCacheBtn.disabled = false;
+				clearCacheBtn.classList.remove("disabled");
+				clearCacheBtn.innerText = clearCacheText;
+			}, 1000);
+		});
+	});
+};
+
 const init = () => {
 	generateOptionsList();
+	setupClearCacheButton();
 };
 
 init();

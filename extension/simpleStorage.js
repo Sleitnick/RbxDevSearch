@@ -46,6 +46,27 @@ simpleStorage.set = (key, value) => {
 	});
 };
 
+simpleStorage.clear = () => {
+	if (simpleStorage.__mock) {
+		return new Promise((resolve) => {
+			for (const key in simpleStorage.__mockStore) {
+				const oldValue = simpleStorage.__mockStore[key];
+				delete simpleStorage.__mockStore[key];
+				simpleStorage.onChanged.fireAll(key, null, oldValue);
+			}
+			resolve();
+		});
+	} else {
+		return new Promise((resolve, reject) => {
+			try {
+				chrome.storage.sync.clear(resolve);
+			} catch(e) {
+				reject(e);
+			}
+		});
+	}
+};
+
 if (simpleStorage.__mock) {
 	simpleStorage.onChanged = {
 		addListener: (listener) => {
