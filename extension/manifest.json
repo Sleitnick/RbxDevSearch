@@ -1,7 +1,7 @@
 {
-	"manifest_version": 2,
+	"manifest_version": 3,
 	"name": "Roblox DevHub Search",
-	"version": "1.4.4",
+	"version": "1.4.5",
 	"description": "Search the Roblox DevHub",
 	"author": "Stephen Leitnick",
 	"options_ui": {	
@@ -9,7 +9,7 @@
 		"browser_style": true,
 		"open_in_tab": false
 	},
-	"browser_action": {
+	"action": {
 		"default_popup": "popup/popup.html"
 	},
 	"icons": {
@@ -17,11 +17,6 @@
 		"48": "icons/48.png",
 		"96": "icons/96.png",
 		"128": "icons/128.png"
-	},
-	"browser_specific_settings": {
-		"gecko": {
-			"id": "{c01de5b3-4789-416a-a814-9b2ac0aaf987}"
-		}
 	},
 	"permissions": ["storage"]
 }
